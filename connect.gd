@@ -1,22 +1,22 @@
 extends Node2D
 
-@onready var handshake_request: HTTPRequest = $HandshakeRequest
-@onready var polling_request: HTTPRequest = $PollingRequest
 @onready var label: Label = $Label
 @onready var connect_button: Button = $ConnectButton
 @onready var cancel_button: Button = $CancelButton
-
 
 const API_URL = "http://localhost:3000/api";
 const AUTH_URL = "http://localhost:3000/auth";
 
 var handshake: String = "";
 var poll_timer: Timer;
+var polling_request;
+var handshake_request;
 
 func _ready() -> void:
 	$ConnectButton.connect("pressed", _on_connect_pressed)
 	$CancelButton.connect("pressed", _on_cancel_pressed)
 	$CancelButton.hide()
+	print("jwt??", load_jwt())
 	
 func _on_connect_pressed() -> void:
 	init_handshake();
@@ -33,8 +33,10 @@ func cancel_connect():
 	$Label.text = ""
 	
 func init_handshake():
-	$HandshakeRequest.request_completed.connect(_on_handshake_completed)
-	$HandshakeRequest.request(API_URL + "/handshake")
+	handshake_request = HTTPRequest.new();
+	add_child(handshake_request);
+	handshake_request.request_completed.connect(_on_handshake_completed)
+	handshake_request.request(API_URL + "/handshake")
 	$ConnectButton.hide()
 	$CancelButton.show()
 	
@@ -58,13 +60,15 @@ func init_poll_timer():
 func start_polling():
 	print("polling...")
 	$Label.text = "Waiting for auth..."
-	$PollingRequest.request_completed.connect(_on_poll_completed)
+	polling_request = HTTPRequest.new();
+	add_child(polling_request);
+	polling_request.request_completed.connect(_on_poll_completed)
 	init_poll_timer()
 	poll_timer.start()
 
 func poll():
 	print("poll")
-	$PollingRequest.request(API_URL + "/poll?handshake=" + handshake)
+	polling_request.request(API_URL + "/poll?handshake=" + handshake)
 	
 func _on_poll_completed(result, response_code, headers, body):
 	print("polled")
