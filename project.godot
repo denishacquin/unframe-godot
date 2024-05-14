@@ -14,3 +14,11 @@ config/name="CardanoAuth"
 run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Ada="*res://addons/ada_auth/ada.gd"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/ada_auth/plugin.cfg")
