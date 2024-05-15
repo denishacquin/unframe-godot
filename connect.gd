@@ -9,6 +9,7 @@ extends Node2D
 @onready var connect_button: Button = $ConnectButton
 @onready var cancel_button: Button = $CancelButton
 @onready var load_button: Button = $LoadButton
+@onready var item_list: ItemList = $ItemList
 
 const API_URL = "http://localhost:3000/api";
 const AUTH_URL = "http://localhost:3000/auth";
@@ -20,6 +21,7 @@ var handshake_request;
 
 func _ready() -> void:
 	auth.connect("success", _on_auth_success)
+	auth.connect("loaded", _on_load_success)
 	connect_button.connect("pressed", _on_connect_pressed)
 	cancel_button.connect("pressed", _on_cancel_pressed)
 	load_button.connect("pressed", _on_load_pressed)
@@ -46,3 +48,11 @@ func _on_auth_success() -> void:
 func _on_load_pressed() -> void:
 	auth.load_assets()
 	label.text = "Loading assets..."
+	load_button.hide()
+	
+func _on_load_success(assets: Array) -> void:
+	label.text = "Loaded " + str(assets.size()) + " assets!"
+	item_list.show()
+	for asset in assets:
+		print(asset)
+		item_list.add_item(asset.onchain_metadata.name)

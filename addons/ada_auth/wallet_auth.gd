@@ -10,8 +10,10 @@ var poll_timer: Timer;
 var handshake_request: HTTPRequest;
 var polling_request: HTTPRequest;
 var project_key: String;
+var assets: Array;
 
 signal success;
+signal loaded;
 #signal error;
 
 func init(_project_key: String):
@@ -100,5 +102,7 @@ func load_assets():
 	assets_request.request(API_URL + "/assets", headers)
 
 func _on_assets_loaded(result, response_code, headers, body):
-	print('assets loaded')
-	print(result)
+	var json = JSON.parse_string(body.get_string_from_utf8())
+	assets = json.assets
+	print("Loaded ", assets.size(), " assets")
+	emit_signal('loaded', assets)
