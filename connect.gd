@@ -5,11 +5,12 @@ extends Node2D
 @onready var auth = Ada.auth.init("5a79ed29-7140-4f8c-9f54-434a415d8c61")
 #############
 
-@onready var label: Label = $Label
-@onready var connect_button: Button = $ConnectButton
-@onready var cancel_button: Button = $CancelButton
-@onready var load_button: Button = $LoadButton
-@onready var item_list: ItemList = $ItemList
+@onready var label: Label = $Control/CenterContainer/VBoxContainer/Label
+@onready var connect_button: Button = $Control/CenterContainer/VBoxContainer/ConnectButton
+@onready var load_button: Button = $Control/CenterContainer/VBoxContainer/LoadButton
+@onready var cancel_button: Button = $Control/CenterContainer/VBoxContainer/CancelButton
+@onready var item_list: ItemList = $Control/CenterContainer/VBoxContainer/ItemList
+
 
 const API_URL = "http://localhost:3000/api";
 const AUTH_URL = "http://localhost:3000/auth";

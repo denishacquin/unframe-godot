@@ -1,66 +1,55 @@
-[gd_scene load_steps=2 format=3 uid="uid://dx2rlanqcb38v"]
+[gd_scene load_steps=3 format=3 uid="uid://dx2rlanqcb38v"]
 
+[ext_resource type="Theme" uid="uid://b84g4ksrn6wfv" path="res://ui_theme.tres" id="2_k2xj6"]
 [ext_resource type="Script" path="res://connect.gd" id="4_0o6nf"]
 
 [node name="Wallet" type="Node2D"]
 script = ExtResource("4_0o6nf")
 
-[node name="ItemList" type="ItemList" parent="."]
-visible = false
-offset_left = 188.0
-offset_top = 267.0
-offset_right = 901.0
-offset_bottom = 565.0
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="Label" type="Label" parent="."]
-offset_left = 340.0
-offset_top = 188.0
-offset_right = 739.0
-offset_bottom = 248.0
+[node name="CenterContainer" type="CenterContainer" parent="Control"]
+layout_mode = 0
+offset_right = 1154.0
+offset_bottom = 654.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CenterContainer"]
+custom_minimum_size = Vector2(300, 2.08165e-12)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 24
 text = "Connection status"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ConnectButton" type="Button" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 416.0
-offset_top = 363.0
-offset_right = 681.0
-offset_bottom = 458.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 24
+[node name="HSeparator" type="HSeparator" parent="Control/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 30)
+layout_mode = 2
+
+[node name="ConnectButton" type="Button" parent="Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_k2xj6")
 text = "Connect wallet"
 
-[node name="LoadButton" type="Button" parent="."]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 416.0
-offset_top = 363.0
-offset_right = 681.0
-offset_bottom = 458.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="LoadButton" type="Button" parent="Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
 size_flags_horizontal = 4
+theme = ExtResource("2_k2xj6")
 theme_override_font_sizes/font_size = 24
 text = "Load assets"
 
-[node name="CancelButton" type="Button" parent="."]
-visible = false
-offset_left = 442.0
-offset_top = 364.0
-offset_right = 652.0
-offset_bottom = 450.0
+[node name="CancelButton" type="Button" parent="Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_k2xj6")
 theme_override_font_sizes/font_size = 24
 text = "Cancel"
+
+[node name="ItemList" type="ItemList" parent="Control/CenterContainer/VBoxContainer"]
+layout_mode = 2

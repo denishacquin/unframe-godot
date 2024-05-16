@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 Ada="*res://addons/ada_auth/ada.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/ada_auth/plugin.cfg")
