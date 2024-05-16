@@ -1,6 +1,11 @@
 extends Node2D
 
 #############
+# THIS IS A WORK IN PROGRESS #
+# Do not use in production #
+#############
+
+#############
 # One-line setup for wallet authentication using project key
 @onready var auth = Ada.auth.init("5a79ed29-7140-4f8c-9f54-434a415d8c61")
 #############
