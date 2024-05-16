@@ -39,6 +39,7 @@ theme = ExtResource("2_k2xj6")
 text = "Connect wallet"
 
 [node name="LoadButton" type="Button" parent="Control/CenterContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("2_k2xj6")
@@ -46,10 +47,13 @@ theme_override_font_sizes/font_size = 24
 text = "Load assets"
 
 [node name="CancelButton" type="Button" parent="Control/CenterContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 theme = ExtResource("2_k2xj6")
 theme_override_font_sizes/font_size = 24
 text = "Cancel"
 
 [node name="ItemList" type="ItemList" parent="Control/CenterContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(400, 400)
 layout_mode = 2

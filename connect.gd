@@ -60,5 +60,9 @@ func _on_load_success(assets: Array) -> void:
 	label.text = "Loaded " + str(assets.size()) + " assets!"
 	item_list.show()
 	for asset in assets:
-		print(asset)
-		item_list.add_item(asset.onchain_metadata.name)
+		if asset and asset.onchain_metadata:
+			if "name" in asset.onchain_metadata:
+				item_list.add_item(asset.onchain_metadata["name"])
+			elif "title" in asset.onchain_metadata:
+				item_list.add_item(asset.onchain_metadata["title"])
+			
