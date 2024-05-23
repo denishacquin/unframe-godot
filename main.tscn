@@ -38,6 +38,12 @@ layout_mode = 2
 theme = ExtResource("2_k2xj6")
 text = "Connect wallet"
 
+[node name="DisconnectButton" type="Button" parent="Control/CenterContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_k2xj6")
+text = "Log out"
+
 [node name="LoadButton" type="Button" parent="Control/CenterContainer/VBoxContainer"]
 visible = false
 layout_mode = 2
