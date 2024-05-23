@@ -38,12 +38,6 @@ layout_mode = 2
 theme = ExtResource("2_k2xj6")
 text = "Connect wallet"
 
-[node name="DisconnectButton" type="Button" parent="Control/CenterContainer/VBoxContainer"]
-visible = false
-layout_mode = 2
-theme = ExtResource("2_k2xj6")
-text = "Log out"
-
 [node name="LoadButton" type="Button" parent="Control/CenterContainer/VBoxContainer"]
 visible = false
 layout_mode = 2
@@ -59,7 +53,15 @@ theme = ExtResource("2_k2xj6")
 theme_override_font_sizes/font_size = 24
 text = "Cancel"
 
-[node name="ItemList" type="ItemList" parent="Control/CenterContainer/VBoxContainer"]
+[node name="ConnectedScreen" type="VBoxContainer" parent="Control/CenterContainer/VBoxContainer"]
 visible = false
+layout_mode = 2
+
+[node name="ItemList" type="ItemList" parent="Control/CenterContainer/VBoxContainer/ConnectedScreen"]
 custom_minimum_size = Vector2(400, 400)
 layout_mode = 2
+
+[node name="DisconnectButton" type="Button" parent="Control/CenterContainer/VBoxContainer/ConnectedScreen"]
+layout_mode = 2
+theme = ExtResource("2_k2xj6")
+text = "Log out"

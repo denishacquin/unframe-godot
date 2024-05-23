@@ -14,8 +14,9 @@ extends Node2D
 @onready var connect_button: Button = $Control/CenterContainer/VBoxContainer/ConnectButton
 #@onready var load_button: Button = $Control/CenterContainer/VBoxContainer/LoadButton
 @onready var cancel_button: Button = $Control/CenterContainer/VBoxContainer/CancelButton
-@onready var item_list: ItemList = $Control/CenterContainer/VBoxContainer/ItemList
-@onready var disconnect_button: Button = $Control/CenterContainer/VBoxContainer/DisconnectButton
+@onready var connected_screen: VBoxContainer = $Control/CenterContainer/VBoxContainer/ConnectedScreen
+@onready var disconnect_button: Button = $Control/CenterContainer/VBoxContainer/ConnectedScreen/DisconnectButton
+@onready var item_list: ItemList = $Control/CenterContainer/VBoxContainer/ConnectedScreen/ItemList
 
 const API_URL = "http://localhost:3000/api";
 const AUTH_URL = "http://localhost:3000/auth";
@@ -66,8 +67,9 @@ func _on_load_pressed() -> void:
 	
 func _on_load_success(assets: Array) -> void:
 	label.text = "Loaded " + str(assets.size()) + " assets!"
-	item_list.show()
-	disconnect_button.show()
+	#item_list.show()
+	connected_screen.show()
+	#disconnect_button.show()
 	connect_button.hide()
 	for asset in assets:
 		#print(asset.onchain_metadata)
@@ -82,10 +84,11 @@ func _on_auth_error(error) -> void:
 	label.text = error;
 	
 func _on_logout() -> void:
-	item_list.clear()
-	item_list.hide()
+	#item_list.clear()
+	#item_list.hide()
 	connect_button.show();
-	disconnect_button.hide()
+	#disconnect_button.hide()
+	connected_screen.hide()
 	label.text = "Connect with your wallet";
 	
 #func _on_loading() -> void:
